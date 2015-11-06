@@ -1,0 +1,26 @@
+{
+  "name": "invariate",
+  "version": "1.0.0",
+  "description": "Functional wrapper that supports objects-to-multiple-calls",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "coffee -c -m index.coffee.md",
+    "pretest": "npm install",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shimaore/invariate"
+  },
+  "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/shimaore/invariate/issues"
+  },
+  "homepage": "https://github.com/shimaore/invariate",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "coffee-script": "^1.10.0",
+    "mocha": "^2.3.3"
+  }
+}
