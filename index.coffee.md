@@ -1,8 +1,8 @@
     module.exports = invariate = (f) ->
-      ->
-        if typeof arguments[0] is 'object'
-          for k,v of arguments[0]
+      (o,args...)->
+        if typeof o is 'object'
+          for k,v of o
             do (k,v) ->
-              f.call this, k, v
+              f.call this, k, v, args...
         else
           [f.apply this, arguments]
