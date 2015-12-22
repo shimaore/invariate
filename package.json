@@ -1,6 +1,6 @@
 {
   "name": "invariate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Functional wrapper that supports objects-to-multiple-calls",
   "main": "index.js",
   "scripts": {
