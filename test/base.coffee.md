@@ -46,3 +46,14 @@
         f 2:3, (r) ->
           r.should.equal '2,3'
           done()
+      it 'should support callback and Promise', (done) ->
+        f = invariate.acked (k,v,ack) -> ack "#{k},#{v}"
+        count = 0
+        f 2:3, (r) ->
+          r.should.equal '2,3'
+          count++
+          done() if count is 2
+        .then (r) ->
+          r.should.deep.equal ['2,3']
+          count++
+          done() if count is 2
