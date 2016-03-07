@@ -15,6 +15,8 @@ In all cases, returns a new Array containing the value(s) returned by the origin
         else
           [f.apply this, arguments]
 
+    module.exports.invariate = invariate
+
 Promised
 --------
 
