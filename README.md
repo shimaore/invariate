@@ -16,3 +16,5 @@ or as
 in which case the function will be called for each (name,value) pair.
 
 Additional parameters are passed as-is.
+
+The return value is an array containing the return values of each function calls.
