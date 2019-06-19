@@ -13,7 +13,7 @@ In all cases, returns a new Array containing the value(s) returned by the origin
             do (k,v) =>
               f.call this, k, v, args...
         else
-          [f.apply this, arguments]
+          [f.call this, o, args...]
 
     module.exports.invariate = invariate
 
@@ -22,12 +22,10 @@ Promised
 
 Same as invariate, but properly handles Promise return values, returning a Promise that gets resolved with the Array containing all the resolved values.
 
-    Promise = require 'bluebird'
-
     module.exports.promised = promised = (f) ->
       g = invariate f
-      ->
-        Promise.all g.apply this, arguments
+      (args...) ->
+        Promise.all g.apply this, args
 
 Ack
 ---
@@ -36,17 +34,19 @@ Given a function that accepts `(key,value,ack)` as its paramaters (such as Socke
 (Think of it as `promisify` for `ack`.)
 
     module.exports.ack = ack = (f) ->
-      (k,v,ack) ->
+      (k,v,next) ->
         p = new Promise (resolve,reject) =>
           try
             f.call this, k,v, (data) ->
               resolve data
           catch error
             reject error
-        p.bind this
-        if ack?
-          p.then =>
-            ack.apply this, arguments
+        if next?
+          p
+          .then (args...) =>
+            next.apply this, args
+          .catch (error) ->
+            console.error error
         return p
 
 Acked

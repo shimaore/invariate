@@ -4,27 +4,25 @@
   "description": "Functional wrapper that supports objects-to-multiple-calls",
   "main": "index.js",
   "scripts": {
-    "prepublish": "coffee -c -M index.coffee.md",
-    "pretest": "npm install",
-    "test": "mocha"
+    "build": "npm install coffeescript && coffee -c *.coffee.md",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build && coffee -c test/*.coffee.md",
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shimaore/invariate"
+    "url": "https://gitlab.com/shimaore/invariate"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/shimaore/invariate/issues"
+    "url": "https://gitlab.com/shimaore/invariate/issues"
   },
-  "homepage": "https://github.com/shimaore/invariate",
+  "homepage": "https://gitlab.com/shimaore/invariate",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "coffee-script": "^1.11.1",
-    "mocha": "^3.1.2"
-  },
-  "dependencies": {
-    "bluebird": "^3.4.6"
+    "chai": "^4.2.0",
+    "coffeescript": "^2.4.1",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   }
 }
